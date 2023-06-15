@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Welcome, {{ username }}!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Predictor</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body>
+ 
+
+  <!-- Website Title -->
+
+  <div class="container">
+    <h2 class="container-heading"><span class="heading_font">Heart Disease Predictor</span></h2>
+    <div class="description">
+      <p>A Machine Learning Web Application that predicits chances of having heart Disease or not and also calculates the estimated price of life insurance per year, Built with Flask.</p><br>
+    </div>
+  </div>
+  <h2 style="color:rgb(0, 0, 0);font-size:20px;">Welcome, {{ username }}! To know more about this project</h2>
+  <form action="{{ url_for('clickhere')}}"> <input type="submit" class="my-cta-button" value="clickhere"></form>
+  <h3 style="color:rgb(8, 8, 8);font-size:20px;">
+    <marquee> You have successfully logged in,Please fill the details in the following form for heart disease prediction and to calculate the Life insurance per year
+    </marquee></h3>
+  <!-- Text Area -->
+  <div class="ml-container">
+    <form action="{{ url_for('predict')}}" method="POST"> 
+
+      
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" placeholder="Your age.."><br>
+
+
+
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex">
+          <option selected>----select option----</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select><br>
+
+
+
+        <label for="cp">Chest Pain Type</label>
+        <select id="cp" name="cp">
+          <option selected>----select option----</option>
+          <option value="0">Asymptomatic</option>
+          <option value="1">Atypical Angina</option>
+          <option value="2">Non-anginal Pain</option>
+          <option value="3">Typicak Angina</option>
+        </select><br>
+
+
+
+        <label for="trestbps">Resting Blood Pressure</label>
+        <input type="text" id="trestbps" name="trestbps" placeholder="A number in range [94-200] mmHg"><br>
+
+
+
+        <label for="chol">Serum Cholesterol</label>
+        <input type="text" id="chol" name="chol" placeholder="A number in range [126-564] mg/dl"><br>
+
+
+
+        <label for="fbs">Fasting Blood Sugar</label>
+        <select id="fbs" name="fbs">
+          <option selected>----select option----</option>
+          <option value="1">Greater than 120 mg/dl</option>
+          <option value="0">Less than 120 mg/dl</option>
+        </select><br>
+
+
+
+        <label for="restecg">Resting ECG Results</label>
+        <select id="restecg" name="restecg">
+          <option selected>----select option----</option>
+          <option value="0">Normal</option>
+          <option value="1">Having ST-T wave abnormality</option>
+          <option value="2">Probable or definite left ventricular hypertrophy</option>
+        </select><br>
+
+
+
+        <label for="thalach">Max Heart Rate </label>
+        <input type="text" id="thalach" name="thalach" placeholder="A number in range [71-202] bpm"><br>
+
+
+        <label for="exang">Exercise-induced Angina</label>
+        <select id="exang" name="exang">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br>
+
+
+        <label for="oldpeak">ST depression</label>
+        <input type="text" id="oldpeak" name="oldpeak" placeholder="ST depression, typically in [0-6.2]"><br>
+
+
+
+        <label for="slope">slope of the peak exercise ST segment</label>
+        <select id="slope" name="slope">
+          <option selected>----select option----</option>
+          <option value="0">Downsloping</option>
+          <option value="1">Flat</option>
+          <option value="2">Upsloping</option>
+        </select><br>
+        
+
+        <label for="ca">Number of Major vessels</label>
+        <input type="text" id="ca" name="ca" placeholder="Typically in [0-4]"><br> 
+                          
+
+
+        <label for="thal">Thalassemia</label> 
+        <select id="thal" name="thal">
+          <option selected>----select option----</option>
+          <option value="1">Fixed Defect</option>
+          <option value="2">Normal</option> 
+          <option value="3">Reversible Defect</option>  
+        </select><br>
+
+
+        <label for="bmi">Body mass index</label>
+        <input type="text" id="bmi" name="bmi" placeholder="Typically in [20-60]"><br> 
+
+
+        <label for="children">Enter number of children</label>
+        <input type="text" id="children" name="children" placeholder="Typically in [0-5]"><br> 
+
+
+        <label for="smoker">Smoker</label>
+        <select id="smoker" name="smoker">
+          <option selected>----select option----</option>
+          <option value="1">yes</option>
+          <option value="0">no</option>
+        </select><br>
+
+
+        <label for="region">Region</label>
+        <select id="region" name="region">
+          <option selected>----select option----</option>
+          <option value="1">SouthWest</option>
+          <option value="2">SouthEast</option>
+          <option value="3">NorthWest</option>
+          <option value="4">NorthEast</option>
+        </select><br>
+
+
+        <label for="mobile">Mobile No.</label>
+        <input type="text" id="mobile" name="mobile" placeholder="Enter Your Mobile Number"><br>
+
+
+      
+
+      <input type="submit" class="my-cta-button" value="Predict">
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="contact">
+      <a target="_blank" href="https://github.com/BuvanReddyManda/Heart-Disease-Prediction"><i
+          class="fab fa-github fa-lg contact-icon"></i></a>
+    </div>
+    <p class="footer-description"></p>
+  </div>
+
+</body>
+
+</html>

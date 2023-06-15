@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu Example</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#menu {
+			position: fixed;
+			top: 0;
+			left: -200px;
+			width: 200px;
+			height: 100%;
+			background-color: #333;
+			color: #fff;
+			transition: all 0.3s ease;
+		}
+		
+		#menu.open {
+			left: 0;
+		}
+		
+		#menu ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		#menu ul li {
+			padding: 10px;
+			border-bottom: 1px solid #444;
+		}
+		
+		#menu ul li:hover {
+			background-color: #444;
+			cursor: pointer;
+		}
+		
+		#content {
+			margin-left: 200px;
+			padding: 20px;
+			font-family: Arial, sans-serif;
+		}
+	</style>
+	<script>
+		function toggleMenu() {
+			var menu = document.getElementById("menu");
+			menu.classList.toggle("open");
+		}
+		
+		function loadContent(content) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("content").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", content, true);
+			xhttp.send();
+			toggleMenu();
+		}
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<ul>
+			<li onclick="loadContent('k.html')">K</li>
+			<li onclick="loadContent('main.html')">Main</li>
+		</ul>
+	</div>
+	<div id="content">
+		<p>This is the default content.</p>
+	</div>
+	
+	<button onclick="toggleMenu()">Menu</button>
+</body>
+</html>
