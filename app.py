@@ -121,17 +121,30 @@ def predict():
         
 
         
+@app.route('/clickhere')
+def clickhere():
+     return render_template('k.html')
+
+@app.route('/algorithms')
+def algorithms():
+     return render_template('algorithms.html')
+
+
+@app.route('/details')
+def index():
+    return render_template('k.html')
 
 
 
 
 
+@app.route('/back')
+def back():
+     return render_template('main.html')
 
-
-
-
-
-
+@app.route('/Back')
+def Back():
+     return render_template('k.html')
 
 @app.route('/logout')
 def logout():
